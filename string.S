@@ -13,49 +13,44 @@
 		MOV		R12, #0
 		
 		ADR		R0, chars0
-		LDR		R1, [R0]
 		MOV		R2, #11
 		BL		addChars
 		ADR		R0, chars1
-		LDR		R1, [R0]
 		MOV		R2, #11
 		BL		addChars
 		ADR		R0, chars2
-		LDR		R1, [R0]
 		MOV		R2, #11
 		BL		addChars
 		ADR		R0, chars3
-		LDR		R1, [R0]
 		MOV		R2, #10
 		BL		addChars
 		ADR		R0, chars4
-		LDR		R1, [R0]
 		MOV		R2, #10
 		BL		addChars
 		ADR		R0, chars5
-		LDR		R1, [R0]
 		MOV		R2, #11
 		BL		addChars
 		ADR		R0, chars6
-		LDR		R1, [R0]
 		MOV		R2, #11
 		BL		addChars
 		ADR		R0, chars7
-		LDR		R1, [R0]
 		MOV		R2, #11
 		BL		addChars
 		ADR		R0, chars8
-		LDR		R1, [R0]
 		MOV		R2, #8
-
+		
+		ADD		R12, R12, #4
+		MOV		R7, #0
+		LDR		R7, [R13, R12]
 		END
-
-addChars 	MOV		R5, #0
-loop		LDR		R6, [R1, R5]
-		STR		R6, [R13, R12]
-		ADD		R5, R5, #4	
-		ADD		R12, R12, #4	
+		
+addChars	MOV		R5, #0
+		LDR		R6, [R0]
+loop		STR		R6, [R13, R12]
+		ADD		R5, R5, #4
+		ADD		R12, R12, #4
 		SUBS		R2, R2, #1
+		LDR		R6, [R0, R5]
 		BNE		loop
 		MOV		PC, LR
 		
