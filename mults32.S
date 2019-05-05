@@ -105,6 +105,10 @@ finish	BL		setMasks
 		ADDCS	R4, R4, #1
 		ADDs		R4, R4, R6
 		
+		ADR		R13, carry
+		MOVCS	R5, #1
+		STRCS	R5, [R13]
+		
 		CMP		r1, #1
 		RSBgt	r2, r2, #0x00000000
 		RSBgt	r4, r4, #0x00000000
