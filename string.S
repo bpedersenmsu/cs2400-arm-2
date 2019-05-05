@@ -1,22 +1,73 @@
 		;		ARM Programming Assignment #2: Writing C-strings
 		;
 		;		Write a program that assembles the values in chars*
-		;       into a C-style string. A C-style string is an array
-		;       of byte-size characters, terminated by a NULL (0x0).
-		;       Write the C-string to the FILL memory at 'string'.
-		;       Note: It's up to you to declare the correct number
-		;       of bytes to hold the result.
-
+		;		into a C-style string. A C-style string is an array
+		;		of byte-size characters, terminated by a NULL (0x0).
+		;		Write the C-string to the FILL memory at 'string'.
+		;		Note: It's up to you to declare the correct number
+		;		of bytes to hold the result.
+		
 		;		Your code here
+		
+		ADR		R13, string
+		MOV		R12, #0
+		
+		ADR		R0, chars0
+		LDR		R1, [R0]
+		MOV		R2, #11
+		BL		addChars
+		ADR		R0, chars1
+		LDR		R1, [R0]
+		MOV		R2, #11
+		BL		addChars
+		ADR		R0, chars2
+		LDR		R1, [R0]
+		MOV		R2, #11
+		BL		addChars
+		ADR		R0, chars3
+		LDR		R1, [R0]
+		MOV		R2, #10
+		BL		addChars
+		ADR		R0, chars4
+		LDR		R1, [R0]
+		MOV		R2, #10
+		BL		addChars
+		ADR		R0, chars5
+		LDR		R1, [R0]
+		MOV		R2, #11
+		BL		addChars
+		ADR		R0, chars6
+		LDR		R1, [R0]
+		MOV		R2, #11
+		BL		addChars
+		ADR		R0, chars7
+		LDR		R1, [R0]
+		MOV		R2, #11
+		BL		addChars
+		ADR		R0, chars8
+		LDR		R1, [R0]
+		MOV		R2, #8
 
+		END
+
+addChars 	MOV		R5, #0
+loop		LDR		R6, [R1, R5]
+		STR		R6, [R13, R12]
+		ADD		R5, R5, #4	
+		ADD		R12, R12, #4	
+		SUBS		R2, R2, #1
+		BNE		loop
+		MOV		PC, LR
+		
+		
 chars0	DCD		'T', 'h', 'e', ' ', '2', '0', '1', '8', ' ', 'T', 'u'
 chars1	DCD		'r', 'i', 'n', 'g', ' ', 'A', 'w', 'a', 'r', 'd', ' '
 chars2	DCD		'w', 'a', 's', ' ', 'a', 'w', 'a', 'r', 'd', 'e', 'd'
-chars3	DCD		' ', 't', 'o', ' ', 'B', 'e', 'n', 'g', 'i', 'o', ','
-chars4	DCD		' ', 'H', 'i', 'n', 't', 'o', 'n', ',', ' ', 'a', 'n'
+chars3	DCD		' ', 't', 'o', ' ', 'B', 'e', 'n', 'g', 'i', 'o'
+chars4	DCD		' ', 'H', 'i', 'n', 't', 'o', 'n', ' ', 'a', 'n'
 chars5	DCD		'd', ' ', 'L', 'e', 'C', 'u', 'n', 'n', ' ', 'f', 'o'
 chars6	DCD		'r', ' ', 't', 'h', 'e', 'i', 'r', ' ', 'w', 'o', 'r'
 chars7	DCD		'k', ' ', 'o', 'n', ' ', 'n', 'e', 'u', 'r', 'a', 'l'
 chars8	DCD		'n', 'e', 't', 'w', 'o', 'r', 'k', 's', '.'
-count	DCD		97
-#string	FILL	?
+count	DCD		95
+string	FILL		384
